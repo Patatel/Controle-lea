@@ -26,4 +26,15 @@ function readOne($id)
     $result = $requestid->fetch();
     return($result);
 }
+
+function create(string $pseudo, string $nom, string $prenom, string $mdp, string $genre)
+{
+    //connexion a la base de donnée
+    $pdo = db_connect();
+
+    //requet sql d'ajout dans la base
+    $querycreate = "INSERT INTO user_details (username, first_name, last_name, gender, password, status) VALUES (:pseudo, :prenom, :nom, :genre, :mdp, '1')";
+    $requestcreate = $pdo->prepare($querycreate);
+    $requestcreate->execute(array(':pseudo' => $pseudo, ':prenom' => $prenom, ':nom' => $nom, ':genre' => $genre, ':mdp' => $mdp));
+}
 ?>
