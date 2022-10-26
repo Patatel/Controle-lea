@@ -2,13 +2,20 @@
 //appel des fonction sql
 require_once 'crud.php';
 
-$pseudo = $_POST['pseudo'];
-$nom = $_POST['nom'];
-$prenom = $_POST['prenom'];
-$mdp = $_POST['mdp'];
-$genre = $_POST['genre'];
+if (isset($_POST['create'])){
+    $pseudo = $_POST['pseudo'];
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $mdp = $_POST['mdp'];
+    $genre = $_POST['genre'];
+    create($pseudo, $nom, $prenom, $mdp, $genre);
+};
 
-create($pseudo, $nom, $prenom, $mdp, $genre)
+if (isset($_POST['supp'])){
+    $id = $_POST['id'];
+    deleteOne($id);
+};
+
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +65,33 @@ create($pseudo, $nom, $prenom, $mdp, $genre)
                 <br>
                 <button class="btn btn-success" type="submit" name="create">Ajouter</button>
             </form>
+
+            <h2> Supprimer un utilisateur</h2>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label class="form-label" for="id">ID : </label>
+                    <input class="form-control" type="numeric" name="id">
+                </div>
+                <br>
+                <button class="btn btn-success" type="submit" name="supp">Supprimer</button>
+            </form>
     </div>
+
+
+
+
+
+
+
+    <!-- 
+// On retrouvera ici les deux boutons Modif et Suppression dont l'algo se trouve plus haut
+                    <form action="" name="delete" method="post">
+                        <button class="btn btn-danger" type="submit" name="delete" value=< ? = //$task['id'] ?>>Supprimer</button>
+                    </form>
+                    <form action="" name="update" method="post">
+                        <button class="btn btn-primary" type="submit" name="update" value=< ? = //$task['id'] ?>>Modifier</button>
+                    </form>
+                </div>
+        -->
 </body>
 </html>

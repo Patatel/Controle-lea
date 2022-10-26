@@ -37,4 +37,13 @@ function create(string $pseudo, string $nom, string $prenom, string $mdp, string
     $requestcreate = $pdo->prepare($querycreate);
     $requestcreate->execute(array(':pseudo' => $pseudo, ':prenom' => $prenom, ':nom' => $nom, ':genre' => $genre, ':mdp' => $mdp));
 }
+
+function deleteOne(int $id)
+{
+    //Je me connecte à  la db
+    $pdo = db_connect();
+    $querydelete = "DELETE FROM user_details WHERE user_id = $id";
+    $requestdelete = $pdo->prepare($querydelete);
+    $requestdelete->execute();
+}
 ?>
