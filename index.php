@@ -1,10 +1,19 @@
 <?php
 //appel des fonction sql
 require_once 'crud.php';
+
+$pseudo = $_POST['pseudo'];
+$nom = $_POST['nom'];
+$prenom = $_POST['prenom'];
+$mdp = $_POST['mdp'];
+$genre = $_POST['genre'];
+
+create($pseudo, $nom, $prenom, $mdp, $genre)
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,6 +33,31 @@ require_once 'crud.php';
         <h2>Rechercher un utilisateur</h2>
         <?php var_dump(readOne('1')); ?>
 
+        <h2> Ajouter un utilisateur</h2>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label class="form-label" for="pseudo">Pseudo : </label>
+                    <input class="form-control" type="text" name="pseudo">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="nom">Nom : </label>
+                    <input class="form-control" type="text" name="nom">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="prenom">Prénom : </label>
+                    <input class="form-control" type="text" name="prenom">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="mdp">Mot de passe : </label>
+                    <input class="form-control" type="text" name="mdp">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="genre">Genre : </label>
+                    <input class="form-control" type="text" name="genre">
+                </div>
+                <br>
+                <button class="btn btn-success" type="submit" name="create">Ajouter</button>
+            </form>
     </div>
 </body>
 </html>
